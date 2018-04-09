@@ -14,6 +14,7 @@
 <body>
 
 	<a href="goAdd">add</a>  
+	<a href="<%=basePath %>permission/list">权限</a>
 	<table style="min-width: 1100px;">
 
 		<thead>
