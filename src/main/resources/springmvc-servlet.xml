@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd   
+        http://www.springframework.org/schema/context   
+        http://www.springframework.org/schema/context/spring-context-4.1.xsd   
+        http://www.springframework.org/schema/mvc   
+        http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd">  
+  
+    <!-- 自动扫描controller包下的所有类，如果@Controller注入为bean -->  
+     <context:component-scan base-package="admin.controller,admin.daoImpl,admin.serviceImpl" >
+     </context:component-scan>
+    
+    
+    <!-- 以下为SpringMVC配置 -->  
+    <mvc:annotation-driven>  
+        <!-- 返回json数据，@response使用 -->  
+        <mvc:message-converters register-defaults="true">  
+            <bean  
+                class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">  
+                <property name="supportedMediaTypes">  
+                    <list>  
+                        <value>text/html;charset=UTF-8</value>  
+                        <value>application/json;charset=UTF-8</value>  
+                    </list>  
+                </property>  
+  
+            </bean>  
+        </mvc:message-converters>  
+    </mvc:annotation-driven> 
+    
+    
+    <!-- 静态资源映射 -->
+
+	<mvc:resources mapping="/css/**" location="/css/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/layui/**" location="/layui/"
+	cache-period="31536000" />
+	<mvc:resources mapping="/images/**" location="/images/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/js/**" location="/js/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/treeTable/**" location="/treeTable/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/ueditor/**" location="/ueditor/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/umeditor/**" location="/umeditor/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/upload/**" location="/upload/"
+		cache-period="31536000" />
+			<mvc:resources mapping="/shop/**" location="/shop/"
+		cache-period="31536000" />
+		
+	
+		<!--配置拦截器, 多个拦截器,顺序执行 -->
+<!--  	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/shop/**" />
+			<mvc:mapping path="/category/**" />
+			<bean class="myWebSite.admin.interceptor.LogInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors> -->
+  
+    <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+    <bean  
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+        <property name="viewClass"  
+            value="org.springframework.web.servlet.view.JstlView" />  
+        <property name="prefix" value="/WEB-INF/views" />  
+        <property name="suffix" value=".jsp" />  
+    </bean>  
+  
+    <!-- 配置多文件上传 -->  
+    <bean id="multipartResolver"  
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+        <property name="defaultEncoding">  
+            <value>UTF-8</value>  
+        </property>  
+        <property name="maxUploadSize">  
+            <!-- 上传文件大小限制为 -->  
+            <value>32505856</value>  
+        </property>  
+        <property name="maxInMemorySize">  
+            <value>4096</value>  
+        </property>  
+    </bean>  
+  
+</beans>  
