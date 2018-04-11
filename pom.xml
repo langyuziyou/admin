@@ -27,7 +27,22 @@
       <scope>test</scope>
     </dependency>
     
+    	<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>alipay-sdk-java</artifactId>
+				<version>20171012102412</version>
+			</dependency>
     
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId >mail</artifactId>
+		    <version>1.4.5</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.sun.mail</groupId>
+		    <artifactId>javax.mail</artifactId>
+		    <version>1.5.4</version>
+		</dependency>
     
     
 		<!-- https://mvnrepository.com/artifact/httpunit/httpunit -->

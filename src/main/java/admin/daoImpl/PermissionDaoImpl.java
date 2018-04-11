@@ -23,9 +23,9 @@ public class PermissionDaoImpl implements PermissionDao {
 	public List<Map<String, Object>> permissionListByUserId(String userId) {
 		StringBuffer sql = new StringBuffer();
 		sql.append(
-				" SELECT `ddt_permission`.`DDT_PERMISSION_ID`,`ddt_permission`.`PERMISSION_NAME`,`ddt_permission`.`HREF`, ");
-		sql.append(" `ddt_permission`.`LEVEL`,`ddt_permission`.`PARENT_ID`, ");
-		sql.append(" ddt_permission.`TYPE` FROM `ddt_user` ");
+				" SELECT `ddt_permission`.`DDT_PERMISSION_ID`,`ddt_permission`.`PERMISSION_NAME` ");
+/*		sql.append(" ,`ddt_permission`.`HREF`,`ddt_permission`.`LEVEL`,`ddt_permission`.`PARENT_ID`, ddt_permission.`TYPE`");*/
+		sql.append("  FROM `ddt_user` ");
 		sql.append(
 				" LEFT JOIN `ddt_user_group_relation` ON `ddt_user`.`USER_ID` = `ddt_user_group_relation`.`DDT_USER_ID` ");
 		sql.append(" LEFT JOIN `ddt_group` ON `ddt_user_group_relation`.`DDT_GROUP_ID` = `ddt_group`.`DDT_GROUP_ID` ");
